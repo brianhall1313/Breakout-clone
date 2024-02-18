@@ -1,3 +1,3 @@
 extends Node
 
-signal poke
+signal brick_hit(brick)
