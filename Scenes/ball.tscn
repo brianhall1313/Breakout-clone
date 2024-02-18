@@ -7,6 +7,8 @@
 radius = 8.0
 
 [node name="Ball" type="CharacterBody2D"]
+floor_stop_on_slope = false
+floor_block_on_wall = false
 script = ExtResource("1_euaqr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
