@@ -12,7 +12,11 @@ config_version=5
 
 config/name="breakout clone"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://Textures/icon.svg"
+
+[autoload]
+
+GlobalSignalBus="*res://Global/global_signal_bus.gd"
 
 [editor]
 
