@@ -13,11 +13,13 @@ func _physics_process(delta):
 		velocity.x += 0.1
 	else:
 		if velocity.x > 0:
-			velocity.x -= 0.25
+			velocity.x -= 0.35
 		elif velocity.x < 0:
-			velocity.x += 0.25
-		if abs(velocity.x) < 0.25:
+			velocity.x += 0.35
+		if abs(velocity.x) < 0.35:
 			velocity = Vector2.ZERO
+	if abs(velocity.x) > 1:
+		velocity.x = velocity.x / abs(velocity.x)
 	var result = move_and_collide(velocity * delta * SPEED)
 	if result:
 		velocity = Vector2.ZERO

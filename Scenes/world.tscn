@@ -1,25 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3exv6y3ukp5s"]
+[gd_scene load_steps=4 format=3 uid="uid://d3exv6y3ukp5s"]
 
+[ext_resource type="Script" path="res://Scenes/world.gd" id="1_gwhyr"]
 [ext_resource type="PackedScene" uid="uid://c0gu0s75vkcog" path="res://Scenes/paddle.tscn" id="1_tkwvg"]
 [ext_resource type="PackedScene" uid="uid://d0apglhmals0k" path="res://Scenes/wall.tscn" id="2_8paf4"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_gwhyr")
 
 [node name="Paddle" parent="." instance=ExtResource("1_tkwvg")]
-position = Vector2(361, 571)
+position = Vector2(516, 765)
 
 [node name="Wall" parent="." instance=ExtResource("2_8paf4")]
 texture_repeat = 0
 position = Vector2(41, 353)
-scale = Vector2(0.794315, 11.5735)
+scale = Vector2(1.31302, 14.9234)
 
 [node name="Wall2" parent="." instance=ExtResource("2_8paf4")]
 texture_repeat = 0
-position = Vector2(1113, 318)
-scale = Vector2(-1.27925, -10.6884)
+position = Vector2(1161, 336)
+scale = Vector2(-1.72857, -16.0216)
 
 [node name="Wall3" parent="." instance=ExtResource("2_8paf4")]
 texture_repeat = 0
-position = Vector2(525, -29)
+position = Vector2(519, 13)
 rotation = 1.5708
 scale = Vector2(1.08371, -29.8077)
