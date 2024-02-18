@@ -12,3 +12,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+
+func _on_area_2d_area_entered(area):
+	# want to remove player life/respawn ball
+	pass # Replace with function body.
