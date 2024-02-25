@@ -7,7 +7,7 @@ func _physics_process(delta):
 		velocity.x = 15
 	var result = move_and_collide(velocity * delta)
 	if result:
-		#var obj = result.get_collider()
 		velocity = velocity.bounce(result.get_normal()) 
-		#velocity = result.get_normal() * velocity
-	
+		var obj = result.get_collider()
+		if (obj.has_method('get_hit')):
+			obj.get_hit()

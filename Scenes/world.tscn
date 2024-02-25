@@ -32,12 +32,17 @@ scale = Vector2(1.08371, -29.8077)
 
 [node name="Ball" parent="." instance=ExtResource("4_pygh2")]
 position = Vector2(496, 728)
+collision_layer = 3
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(600, 832)
+collision_layer = 2
+collision_mask = 2
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_4k28o")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="BrickContainer" type="Node" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
