@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3exv6y3ukp5s"]
+[gd_scene load_steps=7 format=3 uid="uid://d3exv6y3ukp5s"]
 
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_gwhyr"]
 [ext_resource type="PackedScene" uid="uid://c0gu0s75vkcog" path="res://Scenes/paddle.tscn" id="1_tkwvg"]
 [ext_resource type="PackedScene" uid="uid://d0apglhmals0k" path="res://Scenes/wall.tscn" id="2_8paf4"]
 [ext_resource type="PackedScene" uid="uid://dj0kylrxml5t4" path="res://Scenes/ball.tscn" id="4_pygh2"]
+[ext_resource type="Script" path="res://Scenes/Lives.gd" id="5_mbaql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k28o"]
 size = Vector2(1203, 84)
@@ -12,7 +13,7 @@ size = Vector2(1203, 84)
 script = ExtResource("1_gwhyr")
 
 [node name="Paddle" parent="." instance=ExtResource("1_tkwvg")]
-position = Vector2(516, 765)
+position = Vector2(600, 765)
 
 [node name="Wall" parent="." instance=ExtResource("2_8paf4")]
 texture_repeat = 0
@@ -45,4 +46,24 @@ shape = SubResource("RectangleShape2D_4k28o")
 
 [node name="BrickContainer" type="Node" parent="."]
 
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Lives" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.4
+anchor_bottom = 0.2
+offset_left = 104.0
+offset_top = 776.0
+offset_right = 145.0
+offset_bottom = 791.0
+text = "Default"
+script = ExtResource("5_mbaql")
+
+[connection signal="ball_lost" from="." to="UI/Lives" method="_on_world_ball_lost"]
+[connection signal="ball_reset" from="." to="Ball" method="_on_world_ball_reset"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

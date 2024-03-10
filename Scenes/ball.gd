@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+const starting_position = Vector2(600, 600)
 
 func _physics_process(delta):
 	if (velocity == Vector2.ZERO):
@@ -11,3 +12,7 @@ func _physics_process(delta):
 		var obj = result.get_collider()
 		if (obj.has_method('get_hit')):
 			obj.get_hit()
+
+
+func _on_world_ball_reset():
+	position = starting_position # Replace with function body.

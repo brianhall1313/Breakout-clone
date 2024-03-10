@@ -1,17 +1,22 @@
 extends Node2D
 
+signal ball_reset
+signal ball_lost(num_lives: int)
+
 var brick = preload("res://Scenes/brick.tscn")
+var player_lives
+
 @onready var container = $BrickContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalSignalBus.connect('brick_hit', score_and_check)
-	load_bricks()
+	new_game()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var need_check = false
-func _process(delta):
+func _process(_delta):
 	if need_check:
 		# check win
 		var children = container.get_children()
@@ -22,10 +27,13 @@ func _process(delta):
 
 
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(_area):
 	# want to remove player life/respawn ball
-	print("You lost!!!") # Replace with function body.
-	get_tree().quit()
+	player_lives -= 1 # if we have multiple balls later, this may not always happen
+	if player_lives == 0:
+		print("You lost!!!") # Replace with function body.
+		get_tree().quit()
+	spawn_ball()
 
 # these should be loaded from level config one day
 var brick_pattern = '   1   1       1     \n1111111111111111111111111111111'
@@ -33,6 +41,20 @@ var height = 16
 var width = 32
 var offset_x = 100
 var offset_y = 100
+
+func new_game():
+	player_lives = 3
+	# also init score or anything else top-level here
+	setup_level(0)
+	
+func setup_level(_level: int):
+	load_bricks()
+	spawn_ball()
+	# will reset paddle and ball when we have it
+
+func spawn_ball():
+	ball_lost.emit(player_lives)
+	ball_reset.emit()
 
 func load_bricks():
 	var rows = brick_pattern.split('\n')
