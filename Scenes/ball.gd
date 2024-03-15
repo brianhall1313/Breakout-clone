@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const starting_position = Vector2(600, 600)
+const starting_position:Vector2 = Vector2(600, 600)
 
 func _physics_process(delta):
 	if (velocity == Vector2.ZERO):

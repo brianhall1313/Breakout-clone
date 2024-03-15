@@ -3,8 +3,8 @@ extends Node2D
 signal ball_reset
 signal ball_lost(num_lives: int)
 
-var brick = preload("res://Scenes/brick.tscn")
-var player_lives
+var brick:PackedScene = preload("res://Scenes/brick.tscn")
+var player_lives:int
 
 @onready var container = $BrickContainer
 
@@ -59,8 +59,8 @@ func spawn_ball():
 func load_bricks():
 	var rows = brick_pattern.split('\n')
 	
-	var i = 0
-	var j = 0
+	var i:int= 0
+	var j:int = 0
 	for row in rows:
 		j = 0
 		for tile in row.split(''):

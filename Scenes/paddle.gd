@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 400.0
+const SPEED:float = 400.0
 
 
 

@@ -23,6 +23,7 @@ GlobalSignalBus="*res://Global/global_signal_bus.gd"
 
 window/size/viewport_width=1200
 window/size/viewport_height=800
+window/stretch/mode="canvas_items"
 
 [editor]
 
