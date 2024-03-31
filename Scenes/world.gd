@@ -2,9 +2,11 @@ extends Node2D
 
 signal ball_reset
 signal ball_lost(num_lives: int)
+signal score_updated(new_score: int)
 
 var brick:PackedScene = preload("res://Scenes/brick.tscn")
 var player_lives:int
+var score:int = 0
 
 @onready var container = $BrickContainer
 
@@ -44,6 +46,7 @@ var offset_y = 100
 
 func new_game():
 	player_lives = 3
+	score = 0
 	# also init score or anything else top-level here
 	setup_level(0)
 	
@@ -73,6 +76,6 @@ func load_bricks():
 		i = i + 1
 
 func score_and_check():
-	print("You hit something!")
-	# add score if we track it
+	score = score + 100
+	score_updated.emit(score)
 	need_check = true
