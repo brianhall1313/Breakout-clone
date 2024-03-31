@@ -36,7 +36,7 @@ func _on_area_2d_area_entered(_area):
 	spawn_ball()
 
 # these should be loaded from level config one day
-var brick_pattern = '   1   1       1     \n1111111111111111111111111111111'
+var brick_pattern = '    2   22     2     \n22222222222222222222'
 var height = 16
 var width = 32
 var offset_x = 100
@@ -64,9 +64,10 @@ func load_bricks():
 	for row in rows:
 		j = 0
 		for tile in row.split(''):
-			if tile == '1':
+			if tile.to_int() > 0:
 				var newBrick = brick.instantiate()
 				container.add_child(newBrick)
+				newBrick.set_hp(tile.to_int())
 				newBrick.position = Vector2(j * width + offset_x, i * height + offset_y)
 			j = j + 1
 		i = i + 1

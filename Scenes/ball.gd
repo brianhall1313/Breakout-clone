@@ -4,7 +4,7 @@ const starting_position:Vector2 = Vector2(600, 600)
 
 func _physics_process(delta):
 	if (velocity == Vector2.ZERO):
-		velocity.y = 150
+		velocity.y = 250
 		velocity.x = 15
 	var result = move_and_collide(velocity * delta)
 	if result:

@@ -18,6 +18,7 @@ config/icon="res://Textures/icon.svg"
 [autoload]
 
 GlobalSignalBus="*res://Global/global_signal_bus.gd"
+BrickTexture="*res://Resources/brick_texture.gd"
 
 [display]
 
